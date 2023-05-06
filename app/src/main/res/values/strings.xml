@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">CarePets_Plus</string>
+
+    // list pet
+    <string name="pet_list_title">Pet List</string>
+    <string name="plus">+</string>
+    <string name="delete">x</string>
+
+    // add pet
+    <string name="add_list_title">Add Pet</string>
+    <string name="name">Name</string>
+    <string name="birth">Birth</string>
+    <string name="species">Species</string>
+    <string name="submit">Save</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    // reminder
+    <string name="rm_title_meal">Meal Reminders</string>
+    <string name="rm_title_walk">Walk Reminders</string>
+    <string name="rm_title_medical">Medication Reminders</string>
+    <string name="rm_switch_meal">Reminder to feed</string>
+    <string name="rm_switch_walk">Reminders for walking</string>
+    <string name="rm_switch_medical">Reminders to take daily Medication</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="snack">Snack</string>
+
+    // home
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="heartbeat">Heart Beat</string>
+    <string name="healthtracker">Health tracker</string>
+
+    // weight
+    <string name="weight_diagram_title">Pet\'s Weight Diagram</string>
+    <string name="weight_diagram">Diagram for times of measurement</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="add_weight_title">Add Pet\'s Weight</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "725353028268",
+    "project_id": "carepets-plus",
+    "storage_bucket": "carepets-plus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725353028268:android:fb8c761f9c3033cd289d09",
+        "android_client_info": {
+          "package_name": "com.example.carepets_plus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725353028268-gda4ea64kh8b10dntrl3tgjr2m3mf5vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT69vlICpOpGNGP9Amm3HIhkgYONZ-cCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725353028268-gda4ea64kh8b10dntrl3tgjr2m3mf5vr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
