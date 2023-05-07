@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mav_graph"
+    app:startDestination="@id/homeFragment2">
+
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.example.carepets_plus.mainpart.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/reminderFragment2"
+        android:name="com.example.carepets_plus.mainpart.reminder.ReminderFragment"
+        android:label="fragment_reminder"
+        tools:layout="@layout/fragment_reminder" />
+    <activity
+        android:id="@+id/aboutUsActivity"
+        android:name="com.example.carepets_plus.sourceport.aboutus.AboutUsActivity"
+        android:label="activity_about_us"
+        tools:layout="@layout/activity_about_us" />
+    <activity
+        android:id="@+id/listPetActivity"
+        android:name="com.example.carepets_plus.sourceport.petlist.ListPetActivity"
+        android:label="activity_list_pet"
+        tools:layout="@layout/activity_list_pet" />
+    <activity
+        android:id="@+id/trackerActivity"
+        android:name="com.example.carepets_plus.mainpart.TrackerActivity"
+        android:label="activity_tracker"
+        tools:layout="@layout/activity_tracker" />
+</navigation>

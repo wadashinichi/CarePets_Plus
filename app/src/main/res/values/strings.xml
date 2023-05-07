@@ -38,4 +38,8 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="add_weight_title">Add Pet\'s Weight</string>
+
+    //drawer
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
 </resources>
