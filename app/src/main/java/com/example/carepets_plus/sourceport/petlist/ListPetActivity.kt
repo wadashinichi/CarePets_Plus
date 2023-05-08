@@ -2,6 +2,7 @@ package com.example.carepets_plus.sourceport.petlist
 
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -17,7 +18,7 @@ import com.example.carepets_plus.sourceport.petadd.AddPetActivity
 class ListPetActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListPetBinding
-    private lateinit var plist: List<Pet>
+    private lateinit var plist: MutableList<Pet>
     private lateinit var adapter: PetListAdapter
     private lateinit var res: PetRepository
 
@@ -26,9 +27,12 @@ class ListPetActivity : AppCompatActivity() {
         binding = ActivityListPetBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolBar)
-        res = PetRepository(application)
-        plist = res.getAll()
-        displayList(plist)
+        res = PetRepository(this)
+        if (res.getAllPet() != null) {
+            plist = res.getAllPet()!!
+            displayList(plist)
+            binding.btnDel.text = "s"
+        }
         binding.btnAdd.setOnClickListener {
             moveToAdd()
         }
@@ -37,6 +41,7 @@ class ListPetActivity : AppCompatActivity() {
         }
 
     }
+
     private fun displayList(plist: List<Pet>) {
         adapter = PetListAdapter(plist, this)
         binding.rvPetList.adapter = adapter

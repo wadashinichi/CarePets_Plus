@@ -12,7 +12,7 @@
         android:theme="@style/Theme.CarePets_Plus"
         tools:targetApi="31">
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".sourceport.aboutus.AboutUsActivity"
             android:exported="false" />
         <activity
             android:name=".mainpart.home.modify.ModifyInformationActivity"

@@ -13,11 +13,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carepets_plus.R
 import com.example.carepets_plus.database.Pet
+import com.example.carepets_plus.database.PetRepository
 import com.example.carepets_plus.mainpart.TrackerActivity
 
 class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.Adapter<PetListAdapter.ViewHolder>()  {
 
     private lateinit var listPetActivity: ListPetActivity
+    private lateinit var res: PetRepository
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.pet_image)
         val name: TextView = itemView.findViewById(R.id.pet_name)
@@ -45,12 +47,15 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
 
         // image
 
-        var id: Int = plist[position].id
+        var id: Int? = plist[position].id
         holder.layoutItem.setOnClickListener {
             sendIdToTrack(id, context)
         }
         holder.delItem.setOnClickListener {
-
+            res = PetRepository(context)
+            if (id != null) {
+                res.delPet(id)
+            }
         }
 
     }

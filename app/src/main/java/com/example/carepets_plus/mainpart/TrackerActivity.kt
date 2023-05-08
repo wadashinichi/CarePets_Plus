@@ -11,6 +11,7 @@ import com.example.carepets_plus.R
 import com.example.carepets_plus.databinding.ActivityTrackerBinding
 import com.example.carepets_plus.mainpart.home.HomeFragment
 import com.example.carepets_plus.mainpart.reminder.ReminderFragment
+import com.example.carepets_plus.mainpart.search.SearchFragment
 import com.example.carepets_plus.sourceport.aboutus.AboutUsActivity
 import com.example.carepets_plus.sourceport.petlist.ListPetActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -31,14 +32,19 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         // bat su kien khi kich vao item
         binding.navigationView.setNavigationItemSelectedListener(this)
         replaceFragment(HomeFragment())
-        binding.bottomNavigation.setOnNavigationItemReselectedListener { item: MenuItem ->
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.homeFragment -> replaceFragment(HomeFragment())
-                R.id.searchFragment -> true
-                else -> replaceFragment(ReminderFragment())
+                R.id.homeFragment -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.searchFragment -> replaceFragment(SearchFragment())
+                else -> {
+                    replaceFragment(ReminderFragment())
+                    true
+                }
             }
             true
-
         }
     }
 
