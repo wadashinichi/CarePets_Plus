@@ -8,6 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.carepets_plus.R
+import com.example.carepets_plus.database.PetRepository
 import com.example.carepets_plus.databinding.ActivityTrackerBinding
 import com.example.carepets_plus.mainpart.home.HomeFragment
 import com.example.carepets_plus.mainpart.reminder.ReminderFragment
@@ -20,10 +21,15 @@ import com.google.android.material.navigation.NavigationView
 class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityTrackerBinding
+    private lateinit var res: PetRepository
+    var id: Int = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTrackerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var intent: Intent = intent
+        id = intent.getIntExtra("petId", 1)
 
         setSupportActionBar(binding.toolBar)
         var toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolBar, R.string.drawer_open, R.string.drawer_close)
@@ -34,15 +40,11 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         replaceFragment(HomeFragment())
         binding.bottomNavigation.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.homeFragment -> {
+                R.id.homeFragment ->
                     replaceFragment(HomeFragment())
-                    true
-                }
                 R.id.searchFragment -> replaceFragment(SearchFragment())
-                else -> {
+                else ->
                     replaceFragment(ReminderFragment())
-                    true
-                }
             }
             true
         }
@@ -79,7 +81,7 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         transaction.replace(R.id.content_frame, fg)
         transaction.commit()
     }
-//    fun getPetId(): Int {
-//        return id
-//    }
+    fun getPetId(): Int {
+        return id
+    }
 }

@@ -46,5 +46,21 @@ class PetRepository(context: Context) {
         val db = dbHelper.readableDatabase
         db.delete("Pets", "pet_ID LIKE ?", arrayOf("$id"))
     }
-
+    fun delAllPet() {
+        val db = dbHelper.readableDatabase
+        db.delete("Pets", null, null)
+    }
+    fun getPetById(id: Int): Pet? {
+        val db = dbHelper.readableDatabase
+        val cursor: Cursor = db.query("Pets", null, "pet_ID", arrayOf("$id"), null, null, "pet_ID DESC")
+        if (cursor != null) {
+            cursor.moveToFirst()
+            return Pet(cursor.getInt(cursor.getColumnIndexOrThrow("pet_ID")),
+                cursor.getString(cursor.getColumnIndexOrThrow("pet_name")),
+                cursor.getString(cursor.getColumnIndexOrThrow("pet_img")),
+                cursor.getString(cursor.getColumnIndexOrThrow("pet_birth")),
+                cursor.getString(cursor.getColumnIndexOrThrow("pet_species")))
+        }
+        return null
+    }
 }

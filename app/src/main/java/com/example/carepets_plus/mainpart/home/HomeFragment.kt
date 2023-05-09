@@ -1,60 +1,77 @@
 package com.example.carepets_plus.mainpart.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.carepets_plus.R
+import com.example.carepets_plus.database.*
+import com.example.carepets_plus.databinding.FragmentHomeBinding
+import com.example.carepets_plus.mainpart.TrackerActivity
+import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
+import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
+import com.example.carepets_plus.mainpart.home.weight.WeightDiagramActivity
+import io.grpc.Context
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var res: PetRepository
+    private lateinit var resWeight: WeightRepository
+    private lateinit var resHeight: HeightRepository
+    private lateinit var resHeartBeat: HeartBeatRepository
+    private lateinit var trackerActivity: TrackerActivity
+    private var id: Int = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        trackerActivity = activity as TrackerActivity
+        id = trackerActivity.getPetId()
+        res = PetRepository(requireContext())
+        resWeight = WeightRepository(requireContext())
+        resHeight = HeightRepository(requireContext())
+        resHeartBeat = HeartBeatRepository(requireContext())
+        displayInfo(id)
+        displayHealthTracker(id)
+        // display noteBook
+
+        linkToHealthTracker(id)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    private fun displayInfo(id: Int) {
+        val pet: Pet? = res.getPetById(id)
+        val birth: String? = pet?.birth
+        // calculate age
+        binding.petInfor.text = "${pet?.name} - ${pet?.birth}"
     }
+    private fun displayHealthTracker(id: Int) {
+        binding.petWeight.text = resWeight.getLastWeight(id).toString()
+        binding.petHeight.text = resHeight.getLastHeight(id).toString()
+        binding.petHeartBeat.text = resHeartBeat.getLastHeartBeat(id).toString()
+    }
+    private fun linkToHealthTracker(id: Int) {
+        val context: android.content.Context = requireContext()
+        binding.weightCardView.setOnClickListener {
+            val i: Intent = Intent(context, WeightDiagramActivity::class.java)
+            i.putExtra("petId", id)
+            startActivity(i)
+        }
+        binding.heightCardView.setOnClickListener {
+            val i: Intent = Intent(context, HeightDiagramActivity::class.java)
+            i.putExtra("petId", id)
+            startActivity(i)
+        }
+        binding.heartBeatCardView.setOnClickListener {
+            val i: Intent = Intent(context, HeartBeatDiagramActivity::class.java)
+            i.putExtra("petId", id)
+            startActivity(i)
+        }
+    }
+
 }

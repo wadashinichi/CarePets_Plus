@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carepets_plus.R
 import com.example.carepets_plus.database.Pet
@@ -20,6 +21,7 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
 
     private lateinit var listPetActivity: ListPetActivity
     private lateinit var res: PetRepository
+    private var list: MutableList<Pet> = plist.toMutableList()
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.pet_image)
         val name: TextView = itemView.findViewById(R.id.pet_name)
@@ -55,6 +57,7 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
             res = PetRepository(context)
             if (id != null) {
                 res.delPet(id)
+                res.getAllPet()?.let { it1 -> updateListChange(it1) }
             }
         }
 
@@ -63,5 +66,13 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
         val i: Intent = Intent(context, TrackerActivity::class.java)
         i.putExtra("petId", id)
         ContextCompat.startActivity(context, i, null)
+    }
+    private fun updateListChange(nlist: List<Pet>) {
+        val diff: DiffUtilListChange = DiffUtilListChange(list, nlist)
+        val diffResult = DiffUtil.calculateDiff(diff)
+//        plist = nlist
+//        list.clear()
+        list.addAll(nlist)
+        diffResult.dispatchUpdatesTo(this)
     }
 }

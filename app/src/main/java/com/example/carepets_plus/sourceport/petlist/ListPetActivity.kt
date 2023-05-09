@@ -37,6 +37,7 @@ class ListPetActivity : AppCompatActivity() {
             moveToAdd()
         }
         binding.btnDel.setOnClickListener {
+//            res.delAllPet()
 
         }
 

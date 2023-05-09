@@ -15,17 +15,17 @@ class CarePetDatabase(context: Context) : SQLiteOpenHelper(context, "CarePetData
             "pet_ID INTEGER NOT NULL, " +
                     "weight_date TEXT, " +
                     "weight_time TEXT, " +
-                    "weight_result TEXT NOT NULL"))
-        p0?.execSQL(createTableQuery("Heights", "Height_ID",
+                    "weight_result REAL NOT NULL"))
+        p0?.execSQL(createTableQuery("Heights", "height_ID",
             "pet_ID INTEGER NOT NULL, " +
                     "height_date TEXT, " +
                     "height_time TEXT, " +
-                    "height_result TEXT NOT NULL"))
+                    "height_result REAL NOT NULL"))
         p0?.execSQL(createTableQuery("HeartBeats", "heartbeat_ID",
             "pet_ID INTEGER NOT NULL, " +
                     "heartbeat_date TEXT, " +
                     "heartbeat_time TEXT, " +
-                    "heartbeat_result TEXT NOT NULL"))
+                    "heartbeat_result REAL NOT NULL"))
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
