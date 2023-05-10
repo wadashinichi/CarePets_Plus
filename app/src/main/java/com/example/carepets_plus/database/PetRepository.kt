@@ -6,8 +6,6 @@ import android.content.Context
 import android.database.Cursor
 import android.provider.BaseColumns
 import android.widget.Toast
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class PetRepository(context: Context) {
     private lateinit var dbHelper: CarePetDatabase
@@ -52,7 +50,7 @@ class PetRepository(context: Context) {
     }
     fun getPetById(id: Int): Pet? {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query("Pets", null, "pet_ID", arrayOf("$id"), null, null, "pet_ID DESC")
+        val cursor: Cursor = db.query("Pets", null, "pet_ID = ?", arrayOf("$id"), null, null, "pet_ID DESC")
         if (cursor != null) {
             cursor.moveToFirst()
             return Pet(cursor.getInt(cursor.getColumnIndexOrThrow("pet_ID")),
@@ -61,6 +59,7 @@ class PetRepository(context: Context) {
                 cursor.getString(cursor.getColumnIndexOrThrow("pet_birth")),
                 cursor.getString(cursor.getColumnIndexOrThrow("pet_species")))
         }
+        cursor.close()
         return null
     }
 }

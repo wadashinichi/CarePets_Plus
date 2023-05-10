@@ -21,7 +21,7 @@ class WeightRepository(context: Context) {
     }
     fun getLastWeight(id: Int): Double {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query("Weights", arrayOf("weight_result"), "pet_ID", arrayOf("$id"), null, null, "weight_ID DESC")
+        val cursor: Cursor = db.query("Weights", arrayOf("weight_result"), "pet_ID = ?", arrayOf("$id"), null, null, "weight_ID DESC")
         if (cursor != null) {
             cursor.moveToFirst()
             return cursor.getDouble(cursor.getColumnIndexOrThrow("weight_result"))

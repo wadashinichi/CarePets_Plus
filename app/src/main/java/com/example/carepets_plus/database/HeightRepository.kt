@@ -21,7 +21,7 @@ class HeightRepository(context: Context) {
     }
     fun getLastHeight(id: Int): Double {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query("Heights", arrayOf("height_result"), "pet_ID", arrayOf("$id"), null, null, "height_ID DESC")
+        val cursor: Cursor = db.query("Heights", arrayOf("height_result"), "pet_ID = ?", arrayOf("$id"), null, null, "height_ID DESC")
         if (cursor != null) {   // cost?
             cursor.moveToFirst()
             return cursor.getDouble(cursor.getColumnIndexOrThrow("height_result"))

@@ -22,14 +22,14 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
     private lateinit var binding: ActivityTrackerBinding
     private lateinit var res: PetRepository
-    var id: Int = 1
+    var id: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTrackerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var intent: Intent = intent
-        id = intent.getIntExtra("petId", 1)
+        id = intent.getIntExtra("petId", 0)
 
         setSupportActionBar(binding.toolBar)
         var toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolBar, R.string.drawer_open, R.string.drawer_close)

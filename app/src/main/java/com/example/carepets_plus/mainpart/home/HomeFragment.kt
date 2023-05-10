@@ -13,7 +13,6 @@ import com.example.carepets_plus.mainpart.TrackerActivity
 import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
 import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
 import com.example.carepets_plus.mainpart.home.weight.WeightDiagramActivity
-import io.grpc.Context
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var resHeight: HeightRepository
     private lateinit var resHeartBeat: HeartBeatRepository
     private lateinit var trackerActivity: TrackerActivity
-    private var id: Int = 1
+    private var id: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,19 +35,19 @@ class HomeFragment : Fragment() {
         resHeight = HeightRepository(requireContext())
         resHeartBeat = HeartBeatRepository(requireContext())
         displayInfo(id)
-        displayHealthTracker(id)
+//        displayHealthTracker(id)
         // display noteBook
 
-        linkToHealthTracker(id)
+//        linkToHealthTracker(id)
         return binding.root
     }
 
 
     private fun displayInfo(id: Int) {
         val pet: Pet? = res.getPetById(id)
-        val birth: String? = pet?.birth
+//        val birth: String? = pet?.birth
         // calculate age
-        binding.petInfor.text = "${pet?.name} - ${pet?.birth}"
+//        binding.petInfor.text = "${pet?.name} - ${pet?.birth}"
     }
     private fun displayHealthTracker(id: Int) {
         binding.petWeight.text = resWeight.getLastWeight(id).toString()

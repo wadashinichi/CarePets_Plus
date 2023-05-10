@@ -1,8 +1,8 @@
 package com.example.carepets_plus.sourceport.petlist
 
+import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
 import com.example.carepets_plus.database.Pet
-import javax.annotation.Nullable
 
 class DiffUtilListChange(
     private val oldList: List<Pet>,

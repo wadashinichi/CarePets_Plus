@@ -107,8 +107,8 @@
                 android:id="@+id/height_CardView"
                 android:layout_width="110dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout

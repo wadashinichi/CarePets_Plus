@@ -1,6 +1,5 @@
 package com.example.carepets_plus.database
 
-import com.google.firebase.firestore.IgnoreExtraProperties
 
 //@IgnoreExtraProperties
 data class Pet(

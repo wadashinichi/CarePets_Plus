@@ -21,7 +21,7 @@ class HeartBeatRepository(context: Context) {
     }
     fun getLastHeartBeat(id: Int): Double {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query("HeartBeats", arrayOf("heartBeat_result"), "pet_ID", arrayOf("$id"), null, null, "heartBeat_ID DESC")
+        val cursor: Cursor = db.query("HeartBeats", arrayOf("heartBeat_result"), "pet_ID = ?", arrayOf("$id"), null, null, "heartBeat_ID DESC")
         if (cursor != null) {   // cost?
             cursor.moveToFirst()
             return cursor.getDouble(cursor.getColumnIndexOrThrow("heartBeat_result"))
