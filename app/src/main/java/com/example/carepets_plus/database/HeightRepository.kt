@@ -23,9 +23,12 @@ class HeightRepository(context: Context) {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query("Heights", arrayOf("height_result"), "pet_ID = ?", arrayOf("$id"), null, null, "height_ID DESC")
         if (cursor != null) {   // cost?
-            cursor.moveToFirst()
-            return cursor.getDouble(cursor.getColumnIndexOrThrow("height_result"))
+            if (cursor.moveToNext()) {
+                cursor.moveToFirst()
+                return cursor.getDouble(cursor.getColumnIndexOrThrow("height_result"))
+            }
         }
+        cursor.close()
         return 0.0
     }
 }

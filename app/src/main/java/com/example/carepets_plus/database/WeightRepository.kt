@@ -23,9 +23,12 @@ class WeightRepository(context: Context) {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query("Weights", arrayOf("weight_result"), "pet_ID = ?", arrayOf("$id"), null, null, "weight_ID DESC")
         if (cursor != null) {
-            cursor.moveToFirst()
-            return cursor.getDouble(cursor.getColumnIndexOrThrow("weight_result"))
+            if (cursor.moveToNext()) {
+                cursor.moveToFirst()
+                return cursor.getDouble(cursor.getColumnIndexOrThrow("weight_result"))
+            }
         }
+        cursor.close()
         return 0.0
     }
 }

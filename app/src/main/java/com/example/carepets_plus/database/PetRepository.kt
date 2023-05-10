@@ -62,4 +62,14 @@ class PetRepository(context: Context) {
         cursor.close()
         return null
     }
+    fun updatePet(pet: Pet) {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put("pet_name", pet.name)
+            put("pet_img", pet.img)
+            put("pet_birth", pet.birth)
+            put("pet_species", pet.species)
+        }
+        db.update("Pets", values, "pet_ID LIKE ?", arrayOf("${pet.id}"))
+    }
 }

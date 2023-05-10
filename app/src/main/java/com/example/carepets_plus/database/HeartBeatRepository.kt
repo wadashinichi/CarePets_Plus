@@ -19,13 +19,16 @@ class HeartBeatRepository(context: Context) {
         }
         db.insert("Heights", null, values)
     }
-    fun getLastHeartBeat(id: Int): Double {
+    fun getLastHeartBeat(id: Int): Int {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query("HeartBeats", arrayOf("heartBeat_result"), "pet_ID = ?", arrayOf("$id"), null, null, "heartBeat_ID DESC")
         if (cursor != null) {   // cost?
-            cursor.moveToFirst()
-            return cursor.getDouble(cursor.getColumnIndexOrThrow("heartBeat_result"))
+            if (cursor.moveToNext()) {
+                cursor.moveToFirst()
+                return cursor.getDouble(cursor.getColumnIndexOrThrow("heartBeat_result")).toInt()
+            }
         }
-        return 0.0
+        cursor.close()
+        return 0
     }
 }

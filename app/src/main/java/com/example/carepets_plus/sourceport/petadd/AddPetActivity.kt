@@ -43,7 +43,7 @@ class AddPetActivity : AppCompatActivity() {
             // image
             img = uri
         }
-        binding.editBirth.setOnClickListener {view: View ->
+        binding.birthCardView.setOnClickListener {view: View ->
             takeDate(view)
         }
         binding.btnSubmit.setOnClickListener {

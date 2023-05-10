@@ -12,6 +12,7 @@ import com.example.carepets_plus.databinding.FragmentHomeBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
 import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
 import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
+import com.example.carepets_plus.mainpart.home.modify.ModifyInformationActivity
 import com.example.carepets_plus.mainpart.home.weight.WeightDiagramActivity
 
 class HomeFragment : Fragment() {
@@ -35,10 +36,10 @@ class HomeFragment : Fragment() {
         resHeight = HeightRepository(requireContext())
         resHeartBeat = HeartBeatRepository(requireContext())
         displayInfo(id)
-//        displayHealthTracker(id)
+        displayHealthTracker(id)
         // display noteBook
 
-//        linkToHealthTracker(id)
+        linkToHealthTracker(id)
         return binding.root
     }
 
@@ -47,12 +48,17 @@ class HomeFragment : Fragment() {
         val pet: Pet? = res.getPetById(id)
 //        val birth: String? = pet?.birth
         // calculate age
-//        binding.petInfor.text = "${pet?.name} - ${pet?.birth}"
+        binding.petInfor.text = "${pet?.name} - ${pet?.birth}"
+        binding.editBtn.setOnClickListener {
+            var i: Intent = Intent(requireContext(), ModifyInformationActivity::class.java)
+            i.putExtra("petId", id)
+            startActivity(i)
+        }
     }
     private fun displayHealthTracker(id: Int) {
-        binding.petWeight.text = resWeight.getLastWeight(id).toString()
-        binding.petHeight.text = resHeight.getLastHeight(id).toString()
-        binding.petHeartBeat.text = resHeartBeat.getLastHeartBeat(id).toString()
+        binding.petWeight.text = resWeight.getLastWeight(id).toString() + "kg"
+        binding.petHeight.text = resHeight.getLastHeight(id).toString() + "cm"
+        binding.petHeartBeat.text = resHeartBeat.getLastHeartBeat(id).toString() + " beat/min"
     }
     private fun linkToHealthTracker(id: Int) {
         val context: android.content.Context = requireContext()
