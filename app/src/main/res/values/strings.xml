@@ -31,6 +31,9 @@
     <string name="height">Height</string>
     <string name="heartbeat">Heart Beat</string>
     <string name="healthtracker">Health tracker</string>
+    <string name="article1">How to take care pets at home?</string>
+    <string name="article2">Understand the Risks and Benefits of Pets</string>
+
 
     // weight
     <string name="weight_diagram_title">Pet\'s Weight Diagram</string>

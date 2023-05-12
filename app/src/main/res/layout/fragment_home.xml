@@ -47,7 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
-
             />
     </LinearLayout>
 
@@ -170,100 +169,115 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Care Pet Handbook" />
+            android:scrollbarSize="0dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    app:cardCornerRadius="10dp">
+                    android:text="Care Pet Handbook" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_launcher_background" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <TextView
+                        <LinearLayout
+                            android:id="@+id/article1_cardView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            tools:text="Title1" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="10dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/article1" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:textSize="12sp"
+                                android:paddingVertical="5dp"
+                                android:paddingHorizontal="20dp"
+                                android:textColor="@color/black"
+                                tools:text="@string/article1" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_launcher_background" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            tools:text="Title1" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="180dp"
-                    android:layout_height="150dp"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="10dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_launcher_background" />
-
-                        <TextView
+                        <LinearLayout
+                            android:id="@+id/article2_cardView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            tools:text="Title1" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                            android:orientation="vertical">
 
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/article2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:textSize="12sp"
+                                android:paddingVertical="5dp"
+                                android:paddingHorizontal="20dp"
+                                android:textColor="@color/black"
+                                tools:text="@string/article2" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ic_launcher_background" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:padding="10dp"
+                                tools:text="Title1" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
 

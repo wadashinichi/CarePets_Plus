@@ -76,7 +76,7 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             super.onBackPressed()
         }
     }
-    private fun replaceFragment(fg: Fragment) {
+    fun replaceFragment(fg: Fragment) {
         var transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.content_frame, fg)
         transaction.commit()

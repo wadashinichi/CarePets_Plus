@@ -39,6 +39,7 @@
             >
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/date_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
@@ -67,6 +68,7 @@
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/time_cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
@@ -126,6 +128,7 @@
     </FrameLayout>
 
     <Button
+        android:id="@+id/btn_Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"

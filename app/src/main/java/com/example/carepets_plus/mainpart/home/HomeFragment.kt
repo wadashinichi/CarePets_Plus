@@ -10,6 +10,8 @@ import com.example.carepets_plus.R
 import com.example.carepets_plus.database.*
 import com.example.carepets_plus.databinding.FragmentHomeBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
+import com.example.carepets_plus.mainpart.home.articals.Article1Fragment
+import com.example.carepets_plus.mainpart.home.articals.Article2Fragment
 import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
 import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
 import com.example.carepets_plus.mainpart.home.modify.ModifyInformationActivity
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
         // display noteBook
 
         linkToHealthTracker(id)
+        linkToArticle()
         return binding.root
     }
 
@@ -78,5 +81,14 @@ class HomeFragment : Fragment() {
             startActivity(i)
         }
     }
+    private fun linkToArticle() {
+        binding.article1CardView.setOnClickListener {
+            trackerActivity.replaceFragment(Article1Fragment())
+        }
+        binding.article2CardView.setOnClickListener {
+            trackerActivity.replaceFragment(Article2Fragment())
+        }
+    }
+
 
 }

@@ -31,4 +31,21 @@ class WeightRepository(context: Context) {
         cursor.close()
         return 0.0
     }
+    fun getAllWeight(id: Int): MutableList<Weight>? {
+        val wlist: MutableList<Weight> = mutableListOf()
+        val db = dbHelper.readableDatabase
+        val cursor: Cursor = db.query("Weights", null, "pet_ID = ?", arrayOf("$id"), null, null, null)
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                var weight: Weight = Weight(cursor.getInt(cursor.getColumnIndexOrThrow("weight_ID")),
+                    cursor.getInt(cursor.getColumnIndexOrThrow("pet_ID")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("weight_date")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("weight_time")),
+                    cursor.getDouble(cursor.getColumnIndexOrThrow("weight_result")))
+                wlist?.add(weight)
+            }
+            cursor.close()
+        }
+        return wlist
+    }
 }
