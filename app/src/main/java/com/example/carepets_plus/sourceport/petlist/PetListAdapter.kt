@@ -57,7 +57,8 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
             res = PetRepository(context)
             if (id != null) {
                 res.delPet(id)
-                res.getAllPet()?.let { it1 -> updateListChange(it1) }
+//                res.getAllPet()?.let { it1 -> updateListChange(it1) }
+                reDirect()
             }
         }
 
@@ -74,5 +75,10 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
 //        list.clear()
         list.addAll(nlist)
         diffResult.dispatchUpdatesTo(this)
+    }
+    private fun reDirect() {
+        val i: Intent = Intent()
+        i.setClass(context, ListPetActivity::class.java)
+        context.startActivity(i)
     }
 }

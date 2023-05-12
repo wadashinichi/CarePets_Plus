@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import com.example.carepets_plus.R
 import com.example.carepets_plus.database.Weight
 import com.example.carepets_plus.database.WeightRepository
 import com.example.carepets_plus.databinding.ActivityAddWeightBinding
@@ -74,13 +73,13 @@ class AddWeightActivity : AppCompatActivity() {
         } else if (binding.editResult.text.toString() == "") {
             binding.editResult.error = "Please input weight result!"
         } else {
-            val weight: Weight = Weight(
+            val height: Weight = Weight(
                 null, id,
                 binding.editDate.text.toString(),
                 binding.editTime.text.toString(),
                 binding.editResult.text.toString().toDouble()
             )
-            res.insertWeight(weight)
+            res.insertWeight(height)
             reDirect(id)
         }
     }

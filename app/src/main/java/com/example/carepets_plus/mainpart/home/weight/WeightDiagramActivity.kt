@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carepets_plus.R
+import com.example.carepets_plus.database.Height
 import com.example.carepets_plus.database.Weight
 import com.example.carepets_plus.database.WeightRepository
 import com.example.carepets_plus.databinding.ActivityWeightDiagramBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
-import com.example.carepets_plus.mainpart.home.HomeFragment
-import com.example.carepets_plus.mainpart.reminder.ReminderFragment
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 

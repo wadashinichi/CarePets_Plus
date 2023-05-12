@@ -3,6 +3,7 @@ package com.example.carepets_plus.mainpart.home.modify
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.example.carepets_plus.database.Pet
 import com.example.carepets_plus.database.PetRepository
 import com.example.carepets_plus.databinding.ActivityAddPetBinding
@@ -60,5 +61,11 @@ class ModifyInformationActivity : AppCompatActivity() {
         val i: Intent = Intent(this, TrackerActivity::class.java)
         i.putExtra("petId", id)
         startActivity(i)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

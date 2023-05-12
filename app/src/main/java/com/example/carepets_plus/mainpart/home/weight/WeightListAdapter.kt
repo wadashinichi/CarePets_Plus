@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carepets_plus.R
+import com.example.carepets_plus.database.Height
 import com.example.carepets_plus.database.Weight
 
 class WeightListAdapter(var wlist: List<Weight>) : RecyclerView.Adapter<WeightListAdapter.ViewHolder>() {

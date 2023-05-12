@@ -31,15 +31,15 @@ class ListPetActivity : AppCompatActivity() {
         if (res.getAllPet() != null) {
             plist = res.getAllPet()!!
             displayList(plist)
-            binding.btnDel.text = "s"
+//            binding.btnDel.text = "s"
         }
         binding.btnAdd.setOnClickListener {
             moveToAdd()
         }
-        binding.btnDel.setOnClickListener {
+//        binding.btnDel.setOnClickListener {
 //            res.delAllPet()
 
-        }
+//        }
 
     }
 

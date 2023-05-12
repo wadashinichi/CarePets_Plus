@@ -31,4 +31,21 @@ class HeightRepository(context: Context) {
         cursor.close()
         return 0.0
     }
+    fun getAllHeight(id: Int): MutableList<Height>? {
+        val hlist: MutableList<Height> = mutableListOf()
+        val db = dbHelper.readableDatabase
+        val cursor: Cursor = db.query("Heights", null, "pet_ID = ?", arrayOf("$id"), null, null, null)
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                var height: Height = Height(cursor.getInt(cursor.getColumnIndexOrThrow("height_ID")),
+                    cursor.getInt(cursor.getColumnIndexOrThrow("pet_ID")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("height_date")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("height_time")),
+                    cursor.getDouble(cursor.getColumnIndexOrThrow("height_result")))
+                hlist?.add(height)
+            }
+            cursor.close()
+        }
+        return hlist
+    }
 }

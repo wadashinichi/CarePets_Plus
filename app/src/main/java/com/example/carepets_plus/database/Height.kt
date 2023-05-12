@@ -5,4 +5,5 @@ data class Height(
     var petId: Int = 0,
     var heightDate: String? = "",
     var heightTime: String? = "",
-    var heightResult: Double = 0.0)
+    var heightResult: Double = 0.0
+)

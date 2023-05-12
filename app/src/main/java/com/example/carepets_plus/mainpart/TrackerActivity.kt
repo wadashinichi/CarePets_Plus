@@ -42,7 +42,7 @@ class TrackerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             when (item.itemId) {
                 R.id.homeFragment ->
                     replaceFragment(HomeFragment())
-                R.id.searchFragment -> replaceFragment(SearchFragment())
+//                R.id.searchFragment -> replaceFragment(SearchFragment())
                 else ->
                     replaceFragment(ReminderFragment())
             }

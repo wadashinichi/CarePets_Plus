@@ -37,30 +37,76 @@
                 android:layout_height="wrap_content"
                 android:text="@string/rm_switch_meal"
                 />
-            <TextView
+            <LinearLayout
                 android:id="@+id/breakfast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/breakfast"
-                />
-            <TextView
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/breakfast_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/breakfast"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:id="@+id/edit_breakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/lunch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lunch"
-                />
-            <TextView
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/lunch_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/lunch"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:id="@+id/edit_lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/dinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dinner"
-                />
-            <TextView
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/dinner_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/dinner"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:id="@+id/edit_dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/snack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/snack"
-                />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/snack_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/snack"
+                    android:layout_marginRight="10dp"
+                    />
+                <TextView
+                    android:id="@+id/edit_snack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -95,7 +141,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_walk"
+                android:id="@+id/walk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 

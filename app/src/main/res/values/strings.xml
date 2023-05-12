@@ -25,6 +25,8 @@
     <string name="lunch">Lunch</string>
     <string name="dinner">Dinner</string>
     <string name="snack">Snack</string>
+    <string name="channel_name">Pets Care</string>
+    <string name="channel_description">More Description</string>
 
     // home
     <string name="weight">Weight</string>
@@ -42,7 +44,17 @@
     <string name="time">Time</string>
     <string name="add_weight_title">Add Pet\'s Weight</string>
 
-    //drawer
+    // drawer
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
+
+    // reminder
+
+
+    // about us
+    <string name="app_developer">Nguyen Thi Tieu Tien
+ 21GIT
+ Vietnam - Korea University Of Information And Communication Technology</string>
+    <string name="app_features">Care Pets is the mobile application that show you how to take care of your pets in the best way, and help help you manage routine job about Pets</string>
+
 </resources>

@@ -35,7 +35,7 @@ class WeightRepository(context: Context) {
         val wlist: MutableList<Weight> = mutableListOf()
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query("Weights", null, "pet_ID = ?", arrayOf("$id"), null, null, null)
-        if (cursor != null) {
+        if (cursor.count > 0) {
             while (cursor.moveToNext()) {
                 var weight: Weight = Weight(cursor.getInt(cursor.getColumnIndexOrThrow("weight_ID")),
                     cursor.getInt(cursor.getColumnIndexOrThrow("pet_ID")),
