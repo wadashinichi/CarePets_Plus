@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.carepets_plus.R
 import com.example.carepets_plus.database.Notification
 import com.example.carepets_plus.database.NotificationRepository
+import com.example.carepets_plus.database.PetRepository
 import com.example.carepets_plus.databinding.FragmentReminderBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
 import java.util.*
@@ -28,13 +29,19 @@ class ReminderFragment : Fragment() {
     private lateinit var res: NotificationRepository
     private var walkNotification: Notification? = null
     private lateinit var trackerActivity: TrackerActivity
+    private var id: Int = 0
+    private lateinit var resPet: PetRepository
+    private var petName: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentReminderBinding.inflate(layoutInflater)
         res = NotificationRepository(requireContext())
+        resPet = PetRepository(requireContext())
         trackerActivity = activity as TrackerActivity
+        id = trackerActivity.getPetId()
+        petName = resPet.getPetById(id)?.name.toString()
         setTakeTime()
         createNotificationChannel()
         getAllNotification()
@@ -46,7 +53,7 @@ class ReminderFragment : Fragment() {
         return binding.root
     }
     private fun getAllNotification() {
-        walkNotification = res.getNotificationByName("walk")
+        walkNotification = res.getNotificationByName("walk", id)
     }
     private fun setDefaultState() {
         if (walkNotification != null) {
@@ -57,17 +64,19 @@ class ReminderFragment : Fragment() {
             }
         }
     }
-    private fun connectBroadcast(name: String, hour: Int, minute: Int) {
+    private fun connectBroadcast(name: String, hour: Int, minute: Int, id: Int, petName: String) {
         var i: Intent = Intent(requireContext(), Broadcast::class.java)
         i.putExtra("name", name)
+        i.putExtra("id", id)
+        i.putExtra("petName", petName)
         val pendingIntent: PendingIntent = PendingIntent.getBroadcast(requireContext(), 0, i, 0)
 //        createNotificationChannel()
 
         val alarmManager: AlarmManager = requireContext().getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
 //        val time: Long = getTime(18, 45, 25, 4, 2023)
 //        val time: Long = mill
-
-        takeTime(hour,  minute, Calendar.DAY_OF_MONTH, Calendar.MONTH, Calendar.YEAR)
+        val calendar = Calendar.getInstance()
+        takeTime(hour,  minute, calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR))
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, 24*60*60*1000, pendingIntent)
     }
@@ -107,7 +116,11 @@ class ReminderFragment : Fragment() {
                             binding.walk.text.toString(),
                         1)
                         res.updateNotification(newNote)
-//                        connectBroadcast("walk", )    // ----------> tao (cap nhat thong bao)
+//                        val calendar = Calendar.getInstance()
+                        val strList: List<String> = binding.walk.text.split(":")
+//                        binding.editBreakfast.text = "${strList[0].toInt()} - ${strList[1].toInt()} - $id - $petName - ${calendar.get(Calendar.DAY_OF_MONTH)} - ${calendar.get(Calendar.MONTH) + 1}"
+
+                        connectBroadcast("walk", strList[0].toInt(), strList[1].toInt(), id, petName)    // ----------> tao (cap nhat thong bao)
                     } else {                        // neu walk chua ton tai trong csdl ---> insert 1 notification moi
                         val newNote: Notification = Notification(
                             null,
@@ -115,8 +128,11 @@ class ReminderFragment : Fragment() {
                             "walk",
                             binding.walk.text.toString(),
                             1)
+                        binding.editBreakfast.text = "done"
+
                         res.insertNotification(newNote)
-                        // -------------> tao thong bao
+                        val strList: List<String> = binding.walk.text.split(":")
+                        connectBroadcast("walk", strList[0].toInt(), strList[1].toInt(), id, petName)    // -------------> tao thong bao
                     }
                 } else {
                     // neu walk time chua co gia tri ---> khong lam gi ca
@@ -134,7 +150,6 @@ class ReminderFragment : Fragment() {
                 }
             }
         }
-//        medical
     }
 
 

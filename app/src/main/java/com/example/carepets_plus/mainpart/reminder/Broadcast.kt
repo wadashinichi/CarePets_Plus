@@ -19,16 +19,38 @@ const val messageExtra = "messageExtra"
 class Broadcast : BroadcastReceiver() {
 
     private lateinit var context: Context
-    lateinit var intent: Intent
+    private lateinit var intent: Intent
     override fun onReceive(p0: Context?, p1: Intent?) {
         if (p0 != null) {
             context = p0
         }
+        if (p1 != null) {
+            intent = p1
+        }
+        var notificationID: Int = 0
+        val id = intent.getIntExtra("id", 0)
+        var petName = intent.getStringExtra("petName")
+        notificationID = when(intent.getStringExtra("name")) {
+            "breakfast" -> 200 + id
+            "lunch" -> 201 + id
+            "dinner" -> 202 + id
+            "snack" -> 203 + id
+            "walk" -> 204 + id
+            else -> 0 + id
+        }
+        var titleMessage = when(intent.getStringExtra("name")) {
+            "breakfast" -> "Hey, this the time for $petName's Breakfast"
+            "lunch" -> "Hey, this the time for $petName's Lunch."
+            "dinner" -> "Hey, this the time for $petName's Dinner"
+            "snack" -> "Hey, this the time for $petName's Snack"
+            "walk" -> "Hey, this the time for $petName's Walk"
+            else -> "Hey, this the time for other activity"
+        }
         var builder = NotificationCompat.Builder(context, "petsCareChannel")
             .setSmallIcon(R.drawable.ic_pet_foot)
-            .setContentTitle("Remind ...")
-            .setContentText("Hey, this the time for ...")
-            .setPriority(androidx.core.app.NotificationCompat.PRIORITY_DEFAULT)
+            .setContentTitle("Remind of PetsCare")
+            .setContentText(titleMessage)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         val notificationManager: NotificationManagerCompat = NotificationManagerCompat.from(context)
         if (ActivityCompat.checkSelfPermission(
@@ -36,10 +58,9 @@ class Broadcast : BroadcastReceiver() {
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-
             return
         }
-        notificationManager.notify(200, builder.build())
+        notificationManager.notify(notificationID, builder.build())
     }
 
 }

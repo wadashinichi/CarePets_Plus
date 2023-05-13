@@ -26,11 +26,11 @@ class NotificationRepository(context: Context) {
             put("notification_time", notification.time)
             put("notification_state", notification.state)
         }
-        db.update("Notifications", values, "notification_name LIKE ?", arrayOf("${notification.name}"))
+        db.update("Notifications", values, "(notification_name LIKE ? and pet_ID LIKE ?)", arrayOf("${notification.name}", "${notification.petId}"))
     }
-    fun getNotificationByName(name: String): Notification? {
+    fun getNotificationByName(name: String, id: Int): Notification? {
         val db = dbHelper.readableDatabase
-        val cursor: Cursor = db.query("Notifications", null, "notification_name = ?", arrayOf("$name"), null, null, null)
+        val cursor: Cursor = db.query("Notifications", null, "(notification_name = ? and pet_ID = ?)", arrayOf("$name", "$id"), null, null, null)
         if (cursor.count > 0) {
             cursor.moveToFirst()
             return Notification(cursor.getInt(cursor.getColumnIndexOrThrow("notification_ID")),
