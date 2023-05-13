@@ -31,11 +31,11 @@ class Broadcast : BroadcastReceiver() {
         val id = intent.getIntExtra("id", 0)
         var petName = intent.getStringExtra("petName")
         notificationID = when(intent.getStringExtra("name")) {
-            "breakfast" -> 200 + id
-            "lunch" -> 201 + id
-            "dinner" -> 202 + id
-            "snack" -> 203 + id
-            "walk" -> 204 + id
+            "breakfast" -> 100 + id
+            "lunch" -> 200 + id
+            "dinner" -> 300 + id
+            "snack" -> 400 + id
+            "walk" -> 500 + id
             else -> 0 + id
         }
         var titleMessage = when(intent.getStringExtra("name")) {

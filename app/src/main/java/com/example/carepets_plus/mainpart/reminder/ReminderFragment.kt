@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 import com.example.carepets_plus.R
 import com.example.carepets_plus.database.Notification
 import com.example.carepets_plus.database.NotificationRepository
@@ -146,7 +147,7 @@ class ReminderFragment : Fragment() {
                         walkNotification!!.time,
                         0)
                     res.updateNotification(newNote)
-                    turnOffNotification() // tat thong bao
+                    turnOffNotification("walk", id) // tat thong bao
                 }
             }
         }
@@ -194,7 +195,18 @@ class ReminderFragment : Fragment() {
             notificationManager.createNotificationChannel(mChannel)
         }
     }
-    private fun turnOffNotification() {
-
+    private fun turnOffNotification(name: String, id: Int) {
+        // Get a reference to the notification manager
+        val notificationManager = NotificationManagerCompat.from(requireContext())
+        var notificationID = when (name) {
+            "breakfast" -> 100 + id
+            "lunch" -> 200 + id
+            "dinner" -> 300 + id
+            "snack" -> 400 + id
+            "walk" -> 500 + id
+            else -> 0 + id
+        }
+        // Cancel the notification with the given ID
+        notificationManager.cancel(notificationID)
     }
 }
