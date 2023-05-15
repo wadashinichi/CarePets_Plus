@@ -61,8 +61,8 @@ class ReminderFragment : Fragment() {
             val state: Int = walkNotification!!.state
             if (state == 1) {
                 binding.switchWalk.isChecked = true
-                binding.walk.text = walkNotification!!.time
             }
+            binding.walk.text = walkNotification!!.time
         }
     }
     private fun connectBroadcast(name: String, hour: Int, minute: Int, id: Int, petName: String) {

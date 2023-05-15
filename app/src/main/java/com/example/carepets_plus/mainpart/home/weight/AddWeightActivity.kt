@@ -73,13 +73,13 @@ class AddWeightActivity : AppCompatActivity() {
         } else if (binding.editResult.text.toString() == "") {
             binding.editResult.error = "Please input weight result!"
         } else {
-            val height: Weight = Weight(
+            val weight: Weight = Weight(
                 null, id,
                 binding.editDate.text.toString(),
                 binding.editTime.text.toString(),
                 binding.editResult.text.toString().toDouble()
             )
-            res.insertWeight(height)
+            res.insertWeight(weight)
             reDirect(id)
         }
     }

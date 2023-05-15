@@ -26,6 +26,6 @@ class HeightListAdapter(var hlist: List<Height>) : RecyclerView.Adapter<HeightLi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var item = hlist[position]
-        holder.itemHeight.text = "${item.heightDate} - ${item.heightTime} - ${item.heightResult} kg"
+        holder.itemHeight.text = "${item.heightDate} - ${item.heightTime} - ${item.heightResult} cm"
     }
 }

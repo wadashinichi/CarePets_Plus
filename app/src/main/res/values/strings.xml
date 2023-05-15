@@ -35,6 +35,7 @@
     <string name="healthtracker">Health tracker</string>
     <string name="article1">How to take care pets at home?</string>
     <string name="article2">Understand the Risks and Benefits of Pets</string>
+    <string name="article3">The Bond Between Pet and Owner</string>
 
 
     // weight
@@ -43,6 +44,7 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="add_weight_title">Add Pet\'s Weight</string>
+    <string name="weight_result">Weight Result</string>
 
     // drawer
     <string name="drawer_open">Open drawer</string>

@@ -1,6 +1,8 @@
 package com.example.carepets_plus.sourceport.petlist
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +15,17 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carepets_plus.R
-import com.example.carepets_plus.database.Pet
-import com.example.carepets_plus.database.PetRepository
+import com.example.carepets_plus.database.*
 import com.example.carepets_plus.mainpart.TrackerActivity
 
 class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.Adapter<PetListAdapter.ViewHolder>()  {
 
     private lateinit var listPetActivity: ListPetActivity
     private lateinit var res: PetRepository
+    private lateinit var resWeight: WeightRepository
+    private lateinit var resHeight: HeightRepository
+    private lateinit var resHeartBeat: HeartBeatRepository
+
     private var list: MutableList<Pet> = plist.toMutableList()
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.pet_image)
@@ -55,11 +60,30 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
         }
         holder.delItem.setOnClickListener {
             res = PetRepository(context)
-            if (id != null) {
-                res.delPet(id)
-//                res.getAllPet()?.let { it1 -> updateListChange(it1) }
-                reDirect()
+            resWeight = WeightRepository(context)
+            resHeight = HeightRepository(context)
+            resHeartBeat = HeartBeatRepository(context)
+            val builder: AlertDialog.Builder? = AlertDialog.Builder(context)
+            builder?.apply {
+                setPositiveButton("Delete"
+                ) { _, _ ->
+                    if (id != null) {
+                        res.delPet(id)
+                        //                res.getAllPet()?.let { it1 -> updateListChange(it1) }
+                        resWeight.delWeightById(id)
+                        resHeight.delHeightById(id)
+                        resHeartBeat.delHeartBeatById(id)
+                        reDirect()
+                    }
+                }
+                setNegativeButton("Cancle",
+                DialogInterface.OnClickListener { dialog, _ ->
+                    dialog.cancel()
+                })
             }
+            builder?.setMessage("Do you want to delete ${item.name} and all of its data?")
+            builder?.create()
+            builder?.show()
         }
 
     }

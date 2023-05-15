@@ -37,12 +37,12 @@ class AddPetActivity : AppCompatActivity() {
         var birth: String = ""
         var species: String = ""
         var img: String = ""
-        binding.btnPickImg.setOnClickListener {
-            pickImg()
-
-            // image
-            img = uri
-        }
+//        binding.btnPickImg.setOnClickListener {
+////            pickImg()
+//
+//            // image
+//            img = uri
+//        }
         binding.birthCardView.setOnClickListener {view: View ->
             takeDate(view)
         }

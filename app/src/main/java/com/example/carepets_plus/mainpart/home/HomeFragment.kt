@@ -12,6 +12,7 @@ import com.example.carepets_plus.databinding.FragmentHomeBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
 import com.example.carepets_plus.mainpart.home.articals.Article1Fragment
 import com.example.carepets_plus.mainpart.home.articals.Article2Fragment
+import com.example.carepets_plus.mainpart.home.articals.Article3Fragment
 import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
 import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
 import com.example.carepets_plus.mainpart.home.modify.ModifyInformationActivity
@@ -87,6 +88,9 @@ class HomeFragment : Fragment() {
         }
         binding.article2CardView.setOnClickListener {
             trackerActivity.replaceFragment(Article2Fragment())
+        }
+        binding.article3CardView.setOnClickListener {
+            trackerActivity.replaceFragment(Article3Fragment())
         }
     }
 

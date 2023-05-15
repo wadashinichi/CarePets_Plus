@@ -48,4 +48,8 @@ class HeightRepository(context: Context) {
         }
         return hlist
     }
+    fun delHeightById(id: Int) {
+        val db = dbHelper.readableDatabase
+        db.delete("Heights", "pet_ID LIKE ?", arrayOf("$id"))
+    }
 }

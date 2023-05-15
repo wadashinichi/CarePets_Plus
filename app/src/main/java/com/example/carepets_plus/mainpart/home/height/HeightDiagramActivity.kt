@@ -39,6 +39,7 @@ class HeightDiagramActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolBar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.toolBar.title = "Pet's Height Diagram"
     }
     private fun displayData(id: Int) {
         val hList: MutableList<Height>? = res.getAllHeight(id)

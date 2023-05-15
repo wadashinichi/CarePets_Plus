@@ -48,4 +48,8 @@ class WeightRepository(context: Context) {
         }
         return wlist
     }
+    fun delWeightById(id: Int) {
+        val db = dbHelper.readableDatabase
+        db.delete("Weights", "pet_ID LIKE ?", arrayOf("$id"))
+    }
 }
