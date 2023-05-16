@@ -44,7 +44,7 @@ class Broadcast : BroadcastReceiver() {
             "dinner" -> "Hey, this the time for $petName's Dinner"
             "snack" -> "Hey, this the time for $petName's Snack"
             "walk" -> "Hey, this the time for $petName's Walk"
-            else -> "Hey, this the time for other activity"
+            else -> "Hey, this the time for $petName's Medical activity"
         }
         var builder = NotificationCompat.Builder(context, "petsCareChannel")
             .setSmallIcon(R.drawable.ic_pet_foot)

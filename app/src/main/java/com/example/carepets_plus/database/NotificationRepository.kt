@@ -42,4 +42,8 @@ class NotificationRepository(context: Context) {
         cursor.close()
         return null
     }
+    fun delNotificationById(id: Int) {
+        val db = dbHelper.readableDatabase
+        db.delete("Notifications", "pet_ID LIKE ?", arrayOf("$id"))
+    }
 }

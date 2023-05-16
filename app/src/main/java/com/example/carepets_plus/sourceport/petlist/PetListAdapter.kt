@@ -26,6 +26,7 @@ class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : Recycl
     private lateinit var resWeight: WeightRepository
     private lateinit var resHeight: HeightRepository
     private lateinit var resHeartBeat: HeartBeatRepository
+    private lateinit var resNotification: NotificationRepository
 
 //    private var list: MutableList<Pet> = plist.toMutableList()
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -64,6 +65,7 @@ class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : Recycl
             resWeight = WeightRepository(context)
             resHeight = HeightRepository(context)
             resHeartBeat = HeartBeatRepository(context)
+            resNotification = NotificationRepository(context)
             val builder: AlertDialog.Builder? = AlertDialog.Builder(context)
             builder?.apply {
                 setPositiveButton("Delete"
@@ -74,6 +76,7 @@ class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : Recycl
                         resWeight.delWeightById(id)
                         resHeight.delHeightById(id)
                         resHeartBeat.delHeartBeatById(id)
+                        resNotification.delNotificationById(id)
 //                        reDirect()
                         plist.removeAt(position)
                         val adapter: PetListAdapter = this@PetListAdapter
