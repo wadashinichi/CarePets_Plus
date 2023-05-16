@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -78,6 +79,7 @@ class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : Recycl
                         val adapter: PetListAdapter = this@PetListAdapter
                         adapter.notifyItemRemoved(position)
 //                        notifyDataSetChanged()
+                        turnOffAllNotification(id)
                     }
                 }
                 setNegativeButton("Cancle",
@@ -108,5 +110,13 @@ class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : Recycl
         val i: Intent = Intent()
         i.setClass(context, ListPetActivity::class.java)
         context.startActivity(i)
+    }
+    private fun turnOffAllNotification(id: Int) {
+        val notificationManager = NotificationManagerCompat.from(context)
+        notificationManager.cancel(100+id)
+        notificationManager.cancel(200+id)
+        notificationManager.cancel(300+id)
+        notificationManager.cancel(400+id)
+        notificationManager.cancel(500+id)
     }
 }

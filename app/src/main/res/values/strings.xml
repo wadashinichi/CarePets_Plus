@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">CarePets_Plus</string>
-
+    <string name="app_name">Care Pets</string>
     // list pet
     <string name="pet_list_title">Pet List</string>
     <string name="plus">+</string>
@@ -49,9 +48,6 @@
     // drawer
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
-
-    // reminder
-
 
     // about us
     <string name="app_developer">Nguyen Thi Tieu Tien

@@ -86,7 +86,7 @@
                         android:id="@+id/pet_weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_android"
+                        android:drawableStart="@drawable/ic_weight"
                         android:drawablePadding="10dp"
                         android:textColor="@color/primary"
                         tools:text="... kg" />
@@ -120,7 +120,7 @@
                         android:id="@+id/pet_height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_android"
+                        android:drawableStart="@drawable/ic_height"
                         android:drawablePadding="10dp"
                         android:textColor="@color/primary"
                         tools:text="... cm" />
@@ -152,7 +152,7 @@
                         android:id="@+id/pet_heartBeat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_android"
+                        android:drawableStart="@drawable/ic_heart"
                         android:drawablePadding="10dp"
                         android:textColor="@color/primary"
                         tools:text="... beat/min" />

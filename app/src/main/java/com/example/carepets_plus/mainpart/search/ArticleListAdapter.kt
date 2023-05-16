@@ -46,18 +46,18 @@ class ArticleListAdapter(var alist: List<Article>, var context: Context) : Recyc
 //        val bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 //        holder.img.setImageBitmap(bitmap)
 
-        val imgUrl: String = "https://www.pedigree.com/sites/g/files/fnmzdf1201/files/migrate-product-files/images/ytyyeemm2nmwrddrotut.png"
-        imgUrl?.let {
-            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-//            holder.img.setImageURI(imgUri)
-
-            Picasso.get()
-                .load(imgUrl)
-                .placeholder(R.drawable.ic_android)
-                .error(R.drawable.ic_calendar)
-                .fit()
-                .into(holder.img)
-
+        val imgUrl: String = item.img
+        if (imgUrl != null) {
+            if (imgUrl.isEmpty()) {
+                holder.img.setImageResource(R.drawable.ic_error)
+            } else {
+                Picasso.get()
+                    .load(imgUrl)
+                    .placeholder(R.drawable.ic_placeholder)
+                    .error(R.drawable.ic_calendar)
+                    .fit()
+                    .into(holder.img)
+            }
             holder.title.text = item.title
         }
         holder.cardView.setOnClickListener {

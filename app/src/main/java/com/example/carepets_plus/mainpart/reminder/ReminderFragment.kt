@@ -24,7 +24,6 @@ import java.util.*
 class ReminderFragment : Fragment() {
 
     private lateinit var binding: FragmentReminderBinding
-//    private val NOTIFICATION_REMINDER_NIGHT = 1
     private val CHANNEL_ID = "petsCareChannel"
     private lateinit var calendar: Calendar
     private lateinit var res: NotificationRepository
@@ -50,11 +49,18 @@ class ReminderFragment : Fragment() {
 
         setChangeSwitch()
 
-
         return binding.root
     }
     private fun getAllNotification() {
         walkNotification = res.getNotificationByName("walk", id)
+        walkNotification = res.getNotificationByName("breakfast", id)
+        walkNotification = res.getNotificationByName("lunch", id)
+        walkNotification = res.getNotificationByName("dinner", id)
+
+        walkNotification = res.getNotificationByName("walk", id)
+
+        walkNotification = res.getNotificationByName("medical", id)
+
     }
     private fun setDefaultState() {
         if (walkNotification != null) {
@@ -74,8 +80,6 @@ class ReminderFragment : Fragment() {
 //        createNotificationChannel()
 
         val alarmManager: AlarmManager = requireContext().getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
-//        val time: Long = getTime(18, 45, 25, 4, 2023)
-//        val time: Long = mill
         val calendar = Calendar.getInstance()
         takeTime(hour,  minute, calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR))
 
@@ -104,6 +108,14 @@ class ReminderFragment : Fragment() {
         binding.switchMeal.setOnClickListener {
             if (binding.switchMeal.isChecked) {
 
+            } else {
+                // update mnay type
+
+
+
+                turnOffNotification("breakfast", id)
+                turnOffNotification("lunch", id)
+                turnOffNotification("dinner", id)
             }
         }
         binding.switchWalk.setOnClickListener {
@@ -119,7 +131,6 @@ class ReminderFragment : Fragment() {
                         res.updateNotification(newNote)
 //                        val calendar = Calendar.getInstance()
                         val strList: List<String> = binding.walk.text.split(":")
-//                        binding.editBreakfast.text = "${strList[0].toInt()} - ${strList[1].toInt()} - $id - $petName - ${calendar.get(Calendar.DAY_OF_MONTH)} - ${calendar.get(Calendar.MONTH) + 1}"
 
                         connectBroadcast("walk", strList[0].toInt(), strList[1].toInt(), id, petName)    // ----------> tao (cap nhat thong bao)
                     } else {                        // neu walk chua ton tai trong csdl ---> insert 1 notification moi
@@ -129,7 +140,6 @@ class ReminderFragment : Fragment() {
                             "walk",
                             binding.walk.text.toString(),
                             1)
-                        binding.editBreakfast.text = "done"
 
                         res.insertNotification(newNote)
                         val strList: List<String> = binding.walk.text.split(":")
