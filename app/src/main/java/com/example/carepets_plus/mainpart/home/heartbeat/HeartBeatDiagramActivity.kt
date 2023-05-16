@@ -1,5 +1,7 @@
 package com.example.carepets_plus.mainpart.home.heartbeat
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,6 +39,25 @@ class HeartBeatDiagramActivity : AppCompatActivity() {
         displayData(id)
         binding.btnAdd.setOnClickListener {
             linkToAddHeartBeat(id)
+        }
+        binding.btnDel.setOnClickListener {
+            val builder: AlertDialog.Builder? = AlertDialog.Builder(this)
+            builder?.apply {
+                setPositiveButton("Delete"
+                ) { _, _ ->
+                    if (id != null) {
+                        res.delHeartBeatById(id)
+                        toReturn()
+                    }
+                }
+                setNegativeButton("Cancle",
+                    DialogInterface.OnClickListener { dialog, _ ->
+                        dialog.cancel()
+                    })
+            }
+            builder?.setMessage("Do you want to delete all heart beat data of this pet?")
+            builder?.create()
+            builder?.show()
         }
     }
     private fun setToolBar() {
@@ -99,5 +120,8 @@ class HeartBeatDiagramActivity : AppCompatActivity() {
         val i: Intent = Intent(this, TrackerActivity::class.java)
         i.putExtra("petId", id)
         startActivity(i)
+    }
+    private fun toReturn() {
+        recreate()
     }
 }

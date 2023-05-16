@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CarePets_Plus"
         tools:targetApi="31">
         <activity
+            android:name=".mainpart.search.ReadArticleActivity"
+            android:exported="false" />
+        <activity
             android:name=".sourceport.aboutus.AboutUsActivity"
             android:exported="false" />
         <activity
@@ -57,7 +60,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".mainpart.reminder.Broadcast"/>
+
+        <receiver android:name=".mainpart.reminder.Broadcast" />
     </application>
 
 </manifest>

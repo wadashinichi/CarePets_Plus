@@ -60,7 +60,6 @@
                         android:id="@+id/edit_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="10dp"
                         android:textColor="@color/black"
                         tools:text="6/5/2023"
                         android:textSize="18sp" />
@@ -91,7 +90,6 @@
                         android:id="@+id/edit_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="10dp"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:text="12:00"/>

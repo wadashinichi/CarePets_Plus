@@ -7,6 +7,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
@@ -18,15 +19,14 @@ import com.example.carepets_plus.R
 import com.example.carepets_plus.database.*
 import com.example.carepets_plus.mainpart.TrackerActivity
 
-class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.Adapter<PetListAdapter.ViewHolder>()  {
+class PetListAdapter(var plist: MutableList<Pet>, var context: Context) : RecyclerView.Adapter<PetListAdapter.ViewHolder>()  {
 
-    private lateinit var listPetActivity: ListPetActivity
     private lateinit var res: PetRepository
     private lateinit var resWeight: WeightRepository
     private lateinit var resHeight: HeightRepository
     private lateinit var resHeartBeat: HeartBeatRepository
 
-    private var list: MutableList<Pet> = plist.toMutableList()
+//    private var list: MutableList<Pet> = plist.toMutableList()
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val img: ImageView = itemView.findViewById(R.id.pet_image)
         val name: TextView = itemView.findViewById(R.id.pet_name)
@@ -73,7 +73,11 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
                         resWeight.delWeightById(id)
                         resHeight.delHeightById(id)
                         resHeartBeat.delHeartBeatById(id)
-                        reDirect()
+//                        reDirect()
+                        plist.removeAt(position)
+                        val adapter: PetListAdapter = this@PetListAdapter
+                        adapter.notifyItemRemoved(position)
+//                        notifyDataSetChanged()
                     }
                 }
                 setNegativeButton("Cancle",
@@ -92,14 +96,14 @@ class PetListAdapter(var plist: List<Pet>, var context: Context) : RecyclerView.
         i.putExtra("petId", id)
         ContextCompat.startActivity(context, i, null)
     }
-    private fun updateListChange(nlist: List<Pet>) {
-        val diff: DiffUtilListChange = DiffUtilListChange(list, nlist)
-        val diffResult = DiffUtil.calculateDiff(diff)
-//        plist = nlist
-//        list.clear()
-        list.addAll(nlist)
-        diffResult.dispatchUpdatesTo(this)
-    }
+//    private fun updateListChange(nlist: List<Pet>) {
+//        val diff: DiffUtilListChange = DiffUtilListChange(list, nlist)
+//        val diffResult = DiffUtil.calculateDiff(diff)
+////        plist = nlist
+////        list.clear()
+//        list.addAll(nlist)
+//        diffResult.dispatchUpdatesTo(this)
+//    }
     private fun reDirect() {
         val i: Intent = Intent()
         i.setClass(context, ListPetActivity::class.java)

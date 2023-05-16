@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.carepets_plus.R
 import com.example.carepets_plus.database.*
 import com.example.carepets_plus.databinding.FragmentHomeBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
-import com.example.carepets_plus.mainpart.home.articals.Article1Fragment
-import com.example.carepets_plus.mainpart.home.articals.Article2Fragment
-import com.example.carepets_plus.mainpart.home.articals.Article3Fragment
+import com.example.carepets_plus.mainpart.home.articles.Article1Fragment
+import com.example.carepets_plus.mainpart.home.articles.Article2Fragment
+import com.example.carepets_plus.mainpart.home.articles.Article3Fragment
 import com.example.carepets_plus.mainpart.home.heartbeat.HeartBeatDiagramActivity
 import com.example.carepets_plus.mainpart.home.height.HeightDiagramActivity
 import com.example.carepets_plus.mainpart.home.modify.ModifyInformationActivity

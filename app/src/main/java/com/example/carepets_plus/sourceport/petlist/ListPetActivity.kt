@@ -43,7 +43,7 @@ class ListPetActivity : AppCompatActivity() {
 
     }
 
-    private fun displayList(plist: List<Pet>) {
+    private fun displayList(plist: MutableList<Pet>) {
         adapter = PetListAdapter(plist, this)
         binding.rvPetList.adapter = adapter
         binding.rvPetList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

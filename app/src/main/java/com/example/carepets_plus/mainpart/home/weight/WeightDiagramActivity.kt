@@ -1,5 +1,7 @@
 package com.example.carepets_plus.mainpart.home.weight
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +15,7 @@ import com.example.carepets_plus.database.Weight
 import com.example.carepets_plus.database.WeightRepository
 import com.example.carepets_plus.databinding.ActivityWeightDiagramBinding
 import com.example.carepets_plus.mainpart.TrackerActivity
+import com.example.carepets_plus.sourceport.petlist.PetListAdapter
 import com.jjoe64.graphview.series.DataPoint
 import com.jjoe64.graphview.series.LineGraphSeries
 
@@ -32,6 +35,25 @@ class WeightDiagramActivity : AppCompatActivity() {
         displayData(id)
         binding.btnAdd.setOnClickListener {
             linkToAddWeight(id)
+        }
+        binding.btnDel.setOnClickListener {
+            val builder: AlertDialog.Builder? = AlertDialog.Builder(this)
+            builder?.apply {
+                setPositiveButton("Delete"
+                ) { _, _ ->
+                    if (id != null) {
+                        res.delWeightById(id)
+                        toReturn()
+                    }
+                }
+                setNegativeButton("Cancle",
+                    DialogInterface.OnClickListener { dialog, _ ->
+                        dialog.cancel()
+                    })
+            }
+            builder?.setMessage("Do you want to delete all weights of this pet?")
+            builder?.create()
+            builder?.show()
         }
     }
 
@@ -94,5 +116,8 @@ class WeightDiagramActivity : AppCompatActivity() {
         val i: Intent = Intent(this, TrackerActivity::class.java)
         i.putExtra("petId", id)
         startActivity(i)
+    }
+    private fun toReturn() {
+        recreate()
     }
 }

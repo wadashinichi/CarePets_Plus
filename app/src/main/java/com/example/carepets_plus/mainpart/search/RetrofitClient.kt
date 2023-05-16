@@ -1,6 +1,5 @@
 package com.example.carepets_plus.mainpart.search
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -20,7 +19,7 @@ object RetrofitClient {
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
-    fun create(): ArticalAPI {
-        return retrofit.create(ArticalAPI::class.java)
+    fun create(): ArticleAPI {
+        return retrofit.create(ArticleAPI::class.java)
     }
 }

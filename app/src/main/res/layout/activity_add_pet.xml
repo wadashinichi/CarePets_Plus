@@ -64,14 +64,14 @@
                     android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
                     android:text="@string/name"/>
                 <EditText
                     android:id="@+id/editName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textColor="@color/black"
                     android:inputType="textPersonName"/>
             </LinearLayout>
 
@@ -94,13 +94,14 @@
                     android:text="@string/birth"
                     android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_calendar"
-                    android:textSize="18sp" />
+                    />
                 <TextView
                     android:id="@+id/editBirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
+                    tools:text="15/5/2013"
+                    android:textColor="@color/black"
                     />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -121,9 +122,10 @@
                     android:id="@+id/editSpecies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:inputType="textPersonName"
-                    android:textSize="18dp"/>
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    android:textSize="18sp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

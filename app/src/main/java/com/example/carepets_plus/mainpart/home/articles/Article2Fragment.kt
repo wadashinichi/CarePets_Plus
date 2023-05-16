@@ -1,4 +1,4 @@
-package com.example.carepets_plus.mainpart.home.articals
+package com.example.carepets_plus.mainpart.home.articles
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
